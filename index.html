@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHESS MAYBE. — Look Away. Lose Control.</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Face Detection Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
+</head>
+
+<body>
+    <!-- Screen Flash on Penalty -->
+    <div id="screenFlash" class="screen-flash"></div>
+
+    <header>
+        <div class="header-left">
+            <span class="issue-tag">ISSUE #01</span>
+            <div class="logo">CHESS MAYBE.</div>
+        </div>
+
+        <div class="header-right">
+            <button id="soundToggle" class="sound-toggle-btn" aria-label="Toggle Sound">
+                <span class="sound-icon">🔊</span>
+                <span class="sound-text">AUDIO ON</span>
+            </button>
+            <div class="tagline">LOOK AWAY → LOSE CONTROL</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- =================================
+             HERO
+        ================================== -->
+        <section class="hero">
+            <div class="hero-manifesto">
+                <div class="hero-left">
+                    <div class="eyebrow">TINKERHUB USELESS PROJECTS // EXPERIMENTAL PROTOCOL</div>
+                    <h1 class="hero-title">
+                        DON'T<br>
+                        <span class="hero-title-accent">LOOK AWAY.</span>
+                    </h1>
+                </div>
+
+                <div class="hero-right">
+                    <p class="description">
+                        The board is rigged. The instant your eyes wander from this screen, 
+                        <strong>Black steals an immediate free move</strong>. No fair play, no turns, no excuses.
+                    </p>
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span> LIVE OPTICAL SURVEILLANCE
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHEAT ALERT BANNER -->
+        <div id="cheatAlertBanner" class="cheat-alert-banner">
+            <span class="alert-marker">■</span>
+            <span id="cheatAlertMessage" class="alert-message">GAZE DETACHED! BLACK EXECUTED AN ILLEGAL MOVE!</span>
+        </div>
+
+        <!-- =================================
+             GAME LAYOUT
+        ================================== -->
+        <section class="game-layout">
+
+            <!-- =================================
+                 CAMERA / ATTENTION SENSOR
+            ================================== -->
+            <section class="monitor-section">
+                <div class="section-title">
+                    <span class="section-num">01</span>
+                    <span class="section-heading">ATTENTION SENSOR</span>
+                    <span class="live-tag"><span class="rec-dot"></span> LIVE SENSOR</span>
+                </div>
+
+                <div class="camera-card">
+                    <div class="camera-box" id="cameraBox">
+                        <video id="video" autoplay muted playsinline></video>
+
+                        <!-- Camera overlay when offline -->
+                        <div id="cameraOverlay" class="camera-overlay">
+                            <div class="camera-lens-graphic">
+                                <div class="lens-ring outer"></div>
+                                <div class="lens-ring inner"></div>
+                                <div class="lens-center">👁</div>
+                            </div>
+
+                            <p class="overlay-title">CAMERA OFFLINE</p>
+                            <small class="overlay-desc">We need ocular verification to police your attention.</small>
+                            <div class="overlay-hint">
+                                Click "START SURVEILLANCE" below to engage optical sensor
+                            </div>
+                        </div>
+
+                        <!-- Stark Editorial Corner Marks -->
+                        <div class="camera-corner top-left"></div>
+                        <div class="camera-corner top-right"></div>
+                        <div class="camera-corner bottom-left"></div>
+                        <div class="camera-corner bottom-right"></div>
+
+                        <!-- Top Bar Status -->
+                        <div class="camera-telemetry top-bar">
+                            <span class="telemetry-pill rec-pill"><span class="rec-dot"></span> SENSOR FEED</span>
+                        </div>
+
+                    <!-- Attention status inside camera -->
+                    <div id="attentionStatus" class="attention-status">
+                        SURVEILLANCE OFFLINE
+                    </div>
+                </div>
+
+                <!-- ATTENTION INTEGRITY GAUGE -->
+                <div class="attention-gauge-container">
+                    <div class="gauge-header">
+                        <span class="gauge-label">ATTENTION INTEGRITY</span>
+                        <span id="attentionPercent" class="gauge-percent">100%</span>
+                    </div>
+                    <div class="gauge-track">
+                        <div id="attentionBar" class="gauge-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <!-- Camera controls -->
+                <div class="monitor-controls">
+                    <button id="startButton" class="primary-button">
+                        <span class="btn-icon">●</span>
+                        <span class="btn-label">START SURVEILLANCE</span>
+                    </button>
+
+                    <div class="status-badge">
+                        <span id="systemStatus" class="status-dot"></span>
+                        <span id="cameraStatus">OFFLINE</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SURVEILLANCE STATS -->
+            <div class="surveillance-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-title">CHEATS SUFFERED</div>
+                    <div id="cheatStatCount" class="stat-value text-danger">0</div>
+                    <div class="stat-sub">Free moves stolen by Black</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">FOCUS STREAK</div>
+                    <div id="focusStreakCount" class="stat-value">0s</div>
+                    <div class="stat-sub">Continuous gaze duration</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================
+             CHESS SECTION
+        ================================== -->
+        <section class="chess-section" id="chessSection">
+            <div class="section-title">
+                <span class="section-num">02</span>
+                <span class="section-heading">THE CHESSBOARD</span>
+                <div class="match-info">
+                    <span class="player-pill white-pill">YOU: WHITE</span>
+                    <span class="vs-text">/</span>
+                    <span class="player-pill black-pill">OPPONENT: BLACK</span>
+                </div>
+            </div>
+
+            <div class="board-wrapper">
+                <!-- Chess status bar -->
+                <div class="chess-header">
+                    <div class="turn-indicator">
+                        <span class="turn-bulb"></span>
+                        <div id="turnStatus">YOUR TURN</div>
+                    </div>
+                    <div id="gameStatus" class="game-status-badge">GAME ACTIVE</div>
+                </div>
+
+                <!-- Chess board container with coordinate rails -->
+                <div class="board-frame">
+                    <div class="coord-rail coord-rail-rank">
+                        <span>8</span><span>7</span><span>6</span><span>5</span>
+                        <span>4</span><span>3</span><span>2</span><span>1</span>
+                    </div>
+
+                    <div class="board-center-col">
+                        <!-- Chess board -->
+                        <div id="chessBoard" class="chess-board"></div>
+
+                        <div class="coord-rail coord-rail-file">
+                            <span>A</span><span>B</span><span>C</span><span>D</span>
+                            <span>E</span><span>F</span><span>G</span><span>H</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MOCKING STAMP -->
+                <div id="mockingCharacter" class="mocking-character">
+                    <div class="mock-stamp">
+                        <div class="stamp-badge">VIOLATION DETECTED</div>
+                        <div class="stamp-eyes" id="mockEyes">👁️</div>
+                        <div class="stamp-title">YOU LOOKED AWAY.</div>
+                        <div class="mock-text" id="mockText">YOU LOOKED AWAY 😂</div>
+                    </div>
+                </div>
+
+                <!-- Board controls bar -->
+                <div class="board-controls-bar">
+                    <button id="newGameButton" class="action-button new-game-button">
+                        RESET GAME
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <!-- =================================
+         INCIDENT LOG
+    ================================== -->
+    <section class="log-section">
+        <div class="section-title">
+            <span class="section-num">03</span>
+            <span class="section-heading">INCIDENT TELEMETRY</span>
+        </div>
+
+        <div class="log-container">
+            <div id="eventLog" class="event-log">
+                <div class="log-item">
+                    <span class="log-time">00:00:00</span>
+                    <span class="log-tag tag-system">SYSTEM</span>
+                    <span class="log-msg">SYSTEM READY. KEEP YOUR EYES ON THE BOARD.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-brand">
+            <span class="footer-logo">CHESS MAYBE.</span>
+            <span class="footer-slash">—</span>
+            <span class="footer-slogan">UNFAIR SURVEILLANCE CHESS</span>
+        </div>
+        <div class="footer-tinkerhub">
+            MADE AT TINKERHUB USELESS PROJECTS // FOCUS OR FORFEIT CONTROL
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- JavaScript -->
+
+<script
+    type="module"
+    src="script.js">
+</script>
+
+
+</body>
+
+</html>
