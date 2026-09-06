@@ -222,7 +222,7 @@ function drawBoard() {
             const squareName = file + rank;
             square.dataset.square = squareName;
 
-            // Render crisp vector SVG Piece
+            // Render crisp vector SVG Piece  jhbhbjhbj
             if (piece) {
                 const pieceElement = document.createElement("div");
                 pieceElement.className = "piece";
