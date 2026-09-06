@@ -1,3 +1,4 @@
+<img width="1905" height="915" alt="Screenshot 2026-09-06 020610" src="https://github.com/user-attachments/assets/7b012a61-95c2-42d0-b17c-7873e2ff7af1" />
 <img width="1280" height="640" alt="git (1)" src="https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd" />
 
 
@@ -6,7 +7,7 @@
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: [Viswajith]
 
 
 ### Team Members
@@ -133,50 +134,33 @@ Allow camera access when prompted.
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+<img width="1905" height="915" alt="Screenshot 2026-09-06 020610" src="https://github.com/user-attachments/assets/1ee01b9a-af97-4152-a58d-5d96cfdcb736" />
+*The main CHESS MAYBE interface showing the chess board, webcam/attention monitoring panel, attention gauge, and game statistics.*
+
 
 ![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+<img width="1505" height="870" alt="Screenshot 2026-09-06 020626" src="https://github.com/user-attachments/assets/e4147da1-73c1-4290-8330-644292b29e48" />
+*The attention monitoring interface showing the webcam feed and live attention status while the player is playing.*
+
+
 
 ![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+<img width="1545" height="909" alt="Screenshot 2026-09-06 020644" src="https://github.com/user-attachments/assets/9eb1d270-a1d3-4765-9fdf-007bd0693f56" />
+*The punishment state triggered when the player looks away for more than one second, including the warning, visual effects, and Black's extra move.*
 
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
+<img width="1774" height="887" alt="diagram" src="https://github.com/user-attachments/assets/aef52aa9-f0f1-4ec6-a7cc-360c80d6b2c6" />
+This workflow shows how CHESS MAYBE uses webcam-based face detection to monitor the player's attention. If the face is detected, the game continues normally; if the player looks away for more than one second, the punishment system is triggered, giving Black an extra move and activating warning effects before the game continues.
 
-For Hardware:
 
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
 
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+[(https://drive.google.com/file/d/1vYBI8FaYeeOaz-TZ7OhZDetl9AWGvX1M/view?usp=drive_link)]
 
-# Additional Demos
-[Add any extra demo materials/links]
 
-## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
